@@ -60,6 +60,15 @@ namespace CheckoutKata.Implementation
             return total;
         }
 
+        public void UpsertShopItem(ShopItem item)
+        {
+            var pricelistItem = _priceList.FirstOrDefault(x => x.SKU == item.SKU);
+            if (pricelistItem == null)
+                _priceList.Add(item);
+            else
+                pricelistItem.Update(item);
+        }
+
         #endregion
 
         #region Constructors
