@@ -1,0 +1,6 @@
+src/CheckoutKata/.vs/
+src/CheckoutKata/TestResults/
+src/CheckoutKata/Checkout/bin/
+src/CheckoutKata/Checkout/obj/
+Tests/Checkout.Test/bin/
+Tests/Checkout.Test/obj/Debug/
