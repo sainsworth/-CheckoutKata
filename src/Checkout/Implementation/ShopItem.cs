@@ -30,11 +30,11 @@ namespace CheckoutKata.Implementation
         public override string ToString()
         {
             if (DiscountFor == 0)
-                return string.Format("SKU: {0} - price per item: {1}", SKU, ItemPrice);
+                return string.Format("{0} is {1} each", SKU, ItemPrice);
             else if (DiscountFor == 1)
-                return string.Format("SKU: {0} - price per item: {1} (discounted from {2})", SKU, (ItemPrice - Discount), ItemPrice);
+                return string.Format("{0} is {1} each (discounted from {2})", SKU, (ItemPrice - Discount), ItemPrice);
             else
-                return string.Format("SKU: {0} - price per item: {1} - price per {2} items: {3}", SKU, ItemPrice, DiscountFor, Discount);
+                return string.Format("{0} is {1} each or {2} for {3}", SKU, ItemPrice, DiscountFor, (ItemPrice * DiscountFor) - Discount);
         }
 
         public void Update(ShopItem item)

@@ -77,6 +77,19 @@ namespace CheckoutKata.Test
         }
 
         [TestMethod]
+        public void Checkout_CurrentPriceList_ToString()
+        {
+            var checkout = new Checkout();
+            Assert.AreEqual("No pricelist set", checkout.CurrentPriceList_ToString());
+            checkout.UpsertShopItem(new ShopItem("A", 10));
+            checkout.UpsertShopItem(new ShopItem("B", 10, 1, 5));
+            checkout.UpsertShopItem(new ShopItem("C", 20, 2, 10));
+            Assert.AreEqual(@"A is 10 each
+B is 5 each (discounted from 10)
+C is 20 each or 2 for 30", checkout.CurrentPriceList_ToString());
+        }
+
+        [TestMethod]
         public void ExceptionHandling_ScannedUnknownSKU()
         {
             var checkout = _initialiseCheckout();

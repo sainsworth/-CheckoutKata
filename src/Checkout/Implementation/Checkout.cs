@@ -69,6 +69,20 @@ namespace CheckoutKata.Implementation
                 pricelistItem.Update(item);
         }
 
+        public string CurrentPriceList_ToString()
+        {
+            if (_priceList.Count == 0)
+                return "No pricelist set";
+            else
+            {
+                StringBuilder ret = new StringBuilder(_priceList[0].ToString());
+                foreach(var item in _priceList.Skip(1))
+                    ret.Append(System.Environment.NewLine).Append(item.ToString());
+
+                return ret.ToString();
+            }
+        }
+
         #endregion
 
         #region Constructors
