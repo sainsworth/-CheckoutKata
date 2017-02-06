@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CheckoutKata\Checkout\Checkout.csproj">
+    <ProjectReference Include="..\..\src\Checkout\Checkout.csproj">
       <Project>{866a39ff-6d91-44e1-aa60-3fa929240f0e}</Project>
       <Name>Checkout</Name>
     </ProjectReference>
