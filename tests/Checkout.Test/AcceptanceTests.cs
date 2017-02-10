@@ -12,13 +12,13 @@ namespace CheckoutKata.Tests
     {
         private Checkout _initialiseCheckout()
         {
-            var _priceList = new List<ShopItem>();
-            _priceList.Add(new ShopItem("A", 50, 3, 30));
-            _priceList.Add(new ShopItem("B", 30, 2, 15));
-            _priceList.Add(new ShopItem("C", 60));
-            _priceList.Add(new ShopItem("D", 99));
+            var _shopItemList = new List<ShopItem>();
+            _shopItemList.Add(new ShopItem("A", 50, 3, 30));
+            _shopItemList.Add(new ShopItem("B", 30, 2, 15));
+            _shopItemList.Add(new ShopItem("C", 60));
+            _shopItemList.Add(new ShopItem("D", 99));
 
-            return new Checkout(_priceList);
+            return new Checkout(new PriceList(_shopItemList));
         }
 
         /// <summary>
