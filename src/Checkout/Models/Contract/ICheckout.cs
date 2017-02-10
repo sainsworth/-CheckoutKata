@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheckoutKata.Contract
+namespace CheckoutKata.Models.Contract
 {
-    interface ICheckout
+    public interface ICheckout
     {
         void Scan(string item);
         int Total();
