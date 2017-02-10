@@ -19,9 +19,9 @@ namespace CheckoutKata.Tests
         {
             var pricelist = new PriceList();
             Assert.AreEqual("Empty pricelist", pricelist.ToString());
-            pricelist.UpsertItem(new ShopItem("A", 10));
-            pricelist.UpsertItem(new ShopItem("B", 10, 1, 5));
-            pricelist.UpsertItem(new ShopItem("C", 20, 2, 10));
+            pricelist.UpsertItem("A", 10);
+            pricelist.UpsertItem("B", 10, 1, 5);
+            pricelist.UpsertItem("C", 20, 2, 10);
             Assert.AreEqual(@"A is 10 each
 B is 5 each (discounted from 10)
 C is 20 each or 2 for 30", pricelist.ToString());
@@ -45,9 +45,9 @@ C is 20 each or 2 for 30", pricelist.ToString());
         public void PriceList__Can_Add_update_item_in_pricelist()
         {
             var pricelist = new PriceList(new List<ShopItem> { new ShopItem("A", 10) });
-            Assert.AreEqual(10, pricelist.LookupItem("A").ItemPrice);
-            pricelist.UpsertItem(new ShopItem("A", 20));
-            Assert.AreEqual(20, pricelist.LookupItem("A").ItemPrice);
+            Assert.AreEqual(10, pricelist.GetItemsPrice("A",1));
+            pricelist.UpsertItem("A", 20);
+            Assert.AreEqual(20, pricelist.GetItemsPrice("A", 1));
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ C is 20 each or 2 for 30", pricelist.ToString());
             var exceptionMessage = "No Exception Caught";
             try
             {
-                pricelist.UpsertItem(new ShopItem("A", 10, 2, 20));
+                pricelist.UpsertItem("A", 10, 2, 20);
             }
             catch (ExcessiveDiscountException e)
             {

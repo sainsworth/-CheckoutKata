@@ -29,21 +29,26 @@ namespace CheckoutKata.Models
             return _shopItemList.FirstOrDefault(x => x.SKU == sku) != null;
         } 
 
-        public ShopItem LookupItem(string sku)
+        public int GetItemsPrice(string sku, int quantity)
         {
-            var pricelistItem = _shopItemList.FirstOrDefault(x => x.SKU == sku);
-            if (pricelistItem == null)
+            var shopItem = _shopItemList.FirstOrDefault(x => x.SKU == sku);
+            if (shopItem == null)
                 throw new UnknownItemException(sku);
-            return pricelistItem;
+
+            int ret = shopItem.ItemPrice * quantity;
+            if (shopItem.DiscountFor > 0)
+                ret -= (quantity / shopItem.DiscountFor) * shopItem.Discount;
+
+            return ret;
         }
 
-        public void UpsertItem(ShopItem item)
+        private void UpsertItem(ShopItem item)
         {
-            var pricelistItem = _shopItemList.FirstOrDefault(x => x.SKU == item.SKU);
-            if (pricelistItem == null)
+            var shopItem = _shopItemList.FirstOrDefault(x => x.SKU == item.SKU);
+            if (shopItem == null)
                 _shopItemList.Add(item);
             else
-                pricelistItem.Update(item);
+                shopItem.Update(item);
         }
 
         public void UpsertItem(string sku, int price)

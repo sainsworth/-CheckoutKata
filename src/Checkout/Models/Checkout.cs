@@ -49,15 +49,8 @@ namespace CheckoutKata.Models
         {
             int total = 0;
 
-            foreach(var item in _scanned.ToList()){
-                var pricelistItem = _priceList.LookupItem(item.Key);
-                total += item.Value * pricelistItem.ItemPrice;
-                if (pricelistItem.DiscountFor > 0)
-                {
-                    int discount = (item.Value / pricelistItem.DiscountFor) * pricelistItem.Discount;
-                    total -= discount;
-                }
-            }
+            foreach (var item in _scanned.ToList())
+                total += _priceList.GetItemsPrice(item.Key, item.Value);
 
             return total;
         }
@@ -66,10 +59,10 @@ namespace CheckoutKata.Models
 
         #region Constructors
 
-        public Checkout(List<ShopItem> shopItemlist)
+        public Checkout(IPriceList priceList)
         {
             _scanned = new Dictionary<string, int>();
-            _priceList = new PriceList(shopItemlist);
+            _priceList = priceList;
         }
 
         #endregion

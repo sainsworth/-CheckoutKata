@@ -10,15 +10,15 @@ namespace CheckoutKata.Tests
     [TestClass]
     public class CheckoutTests
     {
-        private List<ShopItem> _base_ShopItemList()
+        private Checkout _initialiseCheckout()
         {
-            var _priceList = new List<ShopItem>();
-            _priceList.Add(new ShopItem("A", 50, 3, 30));
-            _priceList.Add(new ShopItem("B", 30, 2, 15));
-            _priceList.Add(new ShopItem("C", 60));
-            _priceList.Add(new ShopItem("D", 99));
+            var _shopItemList = new List<ShopItem>();
+            _shopItemList.Add(new ShopItem("A", 50, 3, 30));
+            _shopItemList.Add(new ShopItem("B", 30, 2, 15));
+            _shopItemList.Add(new ShopItem("C", 60));
+            _shopItemList.Add(new ShopItem("D", 99));
 
-            return _priceList;
+            return new Checkout(new PriceList(_shopItemList));
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace CheckoutKata.Tests
         [TestMethod]
         public void Checkout__Scan_single_item_returns_price_of_item()
         {
-            var checkout = new Checkout(_base_ShopItemList());
+            var checkout = _initialiseCheckout();
             checkout.Scan("A");
 
             Assert.AreEqual(50, checkout.Total());
@@ -39,7 +39,7 @@ namespace CheckoutKata.Tests
         [TestMethod]
         public void Checkout__Scan_multiple_same_item_returns_appropriate_discount()
         {
-            var checkout = new Checkout(_base_ShopItemList());
+            var checkout = _initialiseCheckout();
             checkout.Scan("A");
             checkout.Scan("A");
             checkout.Scan("A");
@@ -53,7 +53,7 @@ namespace CheckoutKata.Tests
         [TestMethod]
         public void Checkout__Scan_various_items_returns_total_price_for_all()
         {
-            var checkout = new Checkout(_base_ShopItemList());
+            var checkout = _initialiseCheckout();
             checkout.Scan("A");
             checkout.Scan("A");
             checkout.Scan("A");
@@ -69,7 +69,7 @@ namespace CheckoutKata.Tests
         [TestMethod]
         public void Checkout__ExceptionHandling_ScannedUnknownSKU()
         {
-            var checkout = new Checkout(_base_ShopItemList());
+            var checkout = _initialiseCheckout();
             var exceptionMessage = "No Exception Caught";
             try
             {
