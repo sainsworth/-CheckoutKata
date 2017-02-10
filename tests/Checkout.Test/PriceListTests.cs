@@ -33,7 +33,8 @@ C is 20 each or 2 for 30", pricelist.ToString());
         [TestMethod]
         public void PriceList__Can_Add_item_to_pricelist()
         {
-            var pricelist = new PriceList(new List<ShopItem> { new ShopItem("A", 10) });
+            var pricelist = new PriceList();
+            pricelist.UpsertItem("A", 10);
             Assert.AreEqual(true, pricelist.HasItem("A"));
             Assert.AreEqual(false, pricelist.HasItem("B"));
         }
@@ -44,7 +45,8 @@ C is 20 each or 2 for 30", pricelist.ToString());
         [TestMethod]
         public void PriceList__Can_Add_update_item_in_pricelist()
         {
-            var pricelist = new PriceList(new List<ShopItem> { new ShopItem("A", 10) });
+            var pricelist = new PriceList();
+            pricelist.UpsertItem("A", 10);
             Assert.AreEqual(10, pricelist.GetItemsPrice("A",1));
             pricelist.UpsertItem("A", 20);
             Assert.AreEqual(20, pricelist.GetItemsPrice("A", 1));

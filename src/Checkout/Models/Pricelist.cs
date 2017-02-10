@@ -84,11 +84,6 @@ namespace CheckoutKata.Models
             _shopItemList = new List<ShopItem>();
         }
 
-        public PriceList(List<ShopItem> initialPriceList)
-        {
-            _shopItemList = initialPriceList;
-        }
-
         #endregion
     }
 }
