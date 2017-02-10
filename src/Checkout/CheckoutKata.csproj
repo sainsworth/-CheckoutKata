@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Exceptions.cs" />
-    <Compile Include="Implementation\Checkout.cs" />
-    <Compile Include="Contract\ICheckout.cs" />
-    <Compile Include="Implementation\ShopItem.cs" />
+    <Compile Include="Models\Checkout.cs" />
+    <Compile Include="Models\Contract\ICheckout.cs" />
+    <Compile Include="Models\Contract\IPriceList.cs" />
+    <Compile Include="Models\PriceList.cs" />
+    <Compile Include="Models\ShopItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

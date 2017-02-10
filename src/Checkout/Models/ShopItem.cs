@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CheckoutKata.Domain.Exceptions;
 
-namespace CheckoutKata.Implementation
+namespace CheckoutKata.Models
 {
     public class ShopItem
     {

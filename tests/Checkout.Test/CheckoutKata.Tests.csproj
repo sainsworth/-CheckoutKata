@@ -6,8 +6,8 @@
     <ProjectGuid>{050DAF46-88B9-4E58-AC68-1A733884F773}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Checkout.Test</RootNamespace>
-    <AssemblyName>Checkout.Test</AssemblyName>
+    <RootNamespace>CheckoutKata.Tests</RootNamespace>
+    <AssemblyName>CheckoutKata.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,13 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="AcceptanceTests.cs" />
+    <Compile Include="PriceListTests.cs" />
+    <Compile Include="CheckoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Checkout\Checkout.csproj">
+    <ProjectReference Include="..\..\src\Checkout\CheckoutKata.csproj">
       <Project>{866a39ff-6d91-44e1-aa60-3fa929240f0e}</Project>
-      <Name>Checkout</Name>
+      <Name>CheckoutKata</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
